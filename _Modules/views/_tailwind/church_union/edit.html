@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Levels: Unions: Edit{% endblock %}
+
+{% block controller %}Church Union{% endblock %}
+
+{% block link %}/church_union/index{% endblock %}
+
+{% block heading %}Edit Church Union{% endblock %}
+
+{% block body %}
+
+<div class='my-9 p-8 lg:w-1/2 mx-auto'>
+	<div class='bg-gray-100 rounded-lg py-12 px-4 lg:px-24'>
+		<form method='post' action='/church_union/{{ details.id }}/update' class='mt-6'>
+
+			{% include 'church_union/forms/edit_form.html' %}
+
+			<div class='flex items-center justify-center mt-8'>
+				<button type='submit' class='text-white py-2 px-4 uppercase rounded bg-blue-700 hover:bg-blue-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5'>Update Church Union</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+{% endblock %}
+

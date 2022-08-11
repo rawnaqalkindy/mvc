@@ -1,0 +1,7 @@
+/.DS_Store
+/.idea
+/vendor
+/.env
+/node_modules
+/storage
+/Core/System/Files/DoNotTouch

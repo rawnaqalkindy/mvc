@@ -1,0 +1,93 @@
+<div class='md:flex md:items-center mb-3'>
+	<div class='md:w-1/3'>
+		<label for='name' class='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'>Name</label>
+	</div>
+	<div class='md:w-2/3'>
+		<input id='name' name='name' type='text' autofocus value='{{ name }}' class='appearance-none border border-gray-100 px-4 shadow-sm focus:shadow-md focus:placeholder-gray-600 transition rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline' />
+	</div>
+</div>
+
+<div class='md:flex md:items-center mb-3'>
+	<div class='md:w-1/3'>
+		<label for='address' class='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'>Address</label>
+	</div>
+	<div class='md:w-2/3'>
+		<input id='address' name='address' type='text' autofocus value='{{ address }}' class='appearance-none border border-gray-100 px-4 shadow-sm focus:shadow-md focus:placeholder-gray-600 transition rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline' />
+	</div>
+</div>
+
+<div class='md:flex md:items-center mb-3'>
+	<div class='md:w-1/3'>
+		<label for='address_explanation' class='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'>Address Explanation</label>
+	</div>
+	<div class='md:w-2/3'>
+		<input id='address_explanation' name='address_explanation' type='text' autofocus value='{{ address_explanation }}' class='appearance-none border border-gray-100 px-4 shadow-sm focus:shadow-md focus:placeholder-gray-600 transition rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline' />
+	</div>
+</div>
+
+<div class='md:flex md:items-center mb-3'>
+	<div class='md:w-1/3'>
+		<label for='phone' class='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'>Phone</label>
+	</div>
+	<div class='md:w-2/3'>
+		<input id='phone' name='phone' type='text' autofocus value='{{ phone }}' class='appearance-none border border-gray-100 px-4 shadow-sm focus:shadow-md focus:placeholder-gray-600 transition rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline' />
+	</div>
+</div>
+
+<div class='md:flex md:items-center mb-3'>
+	<div class='md:w-1/3'>
+		<label for='email' class='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'>Email</label>
+	</div>
+	<div class='md:w-2/3'>
+		<input id='email' name='email' type='text' autofocus value='{{ email }}' class='appearance-none border border-gray-100 px-4 shadow-sm focus:shadow-md focus:placeholder-gray-600 transition rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline' />
+	</div>
+</div>
+
+<div class='md:flex md:items-center mb-3'>
+	<div class='md:w-1/3'>
+		<label for='website' class='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'>Website</label>
+	</div>
+	<div class='md:w-2/3'>
+		<input id='website' name='website' type='text' autofocus value='{{ website }}' class='appearance-none border border-gray-100 px-4 shadow-sm focus:shadow-md focus:placeholder-gray-600 transition rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline' />
+	</div>
+</div>
+
+<div class='md:flex md:items-center mb-3'>
+	<div class='md:w-1/3'>
+		<label for='district_id' class='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'>District</label>
+	</div>
+	<div class='md:w-2/3'>
+		<select id='district_id' name='district_id' autofocus class='appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600 transition rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline'>
+			{% for district in districts %}
+				<option value='{{ district.id }}' {% if district.id == details.district_id %}selected{% endif %}>{{ district.name }}</option>
+			{% endfor %}
+		</select>
+	</div>
+</div>
+
+<div class='md:flex md:items-center mb-3'>
+	<div class='md:w-1/3'>
+		<label for='conference_id' class='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'>Conference</label>
+	</div>
+	<div class='md:w-2/3'>
+		<select id='conference_id' name='conference_id' autofocus class='appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600 transition rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline'>
+			{% for conference in conferences %}
+				<option value='{{ conference.id }}' {% if conference.id == details.conference_id %}selected{% endif %}>{{ conference.name }}</option>
+			{% endfor %}
+		</select>
+	</div>
+</div>
+
+<div class='md:flex md:items-center mb-3'>
+	<div class='md:w-1/3'>
+		<label for='church_union_id' class='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'>Church Union</label>
+	</div>
+	<div class='md:w-2/3'>
+		<select id='church_union_id' name='church_union_id' autofocus class='appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600 transition rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline'>
+			{% for church_union in church_unions %}
+				<option value='{{ church_union.id }}' {% if church_union.id == details.church_union_id %}selected{% endif %}>{{ church_union.name }}</option>
+			{% endfor %}
+		</select>
+	</div>
+</div>
+
