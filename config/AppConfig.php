@@ -2,8 +2,8 @@
 /*
  * This file is part of the Abc package.
  *
- * This source code is for educational purposes only.
- * It is not recommended to use it in production as it is.
+ * This source code is for educational purposes only. 
+ * It is not recommended using it in production as it is.
  */
 
 // write your own configuration in here
@@ -16,3 +16,16 @@ const MDB_THEME = 'mdb';
 const MY_THEME = TAILWIND_THEME;
 
 const TEMPLATE_PATH = ROOT_PATH . '/App/Views/_templates/';
+
+const TEMPLATE_EXTENSION = '.php';
+const MODULE_NAMESPACE = '_Modules\\';
+const MODEL_NAMESPACE = 'App\Models\\';
+const CONTROLLER_NAMESPACE = 'App\Controllers\\';
+
+const APP = [
+    "debug_error" => [
+        "mode" => "dev"
+    ],
+    "error_handler" => "\\Abc\\ErrorHandler\\ErrorHandler::errorHandler",
+    "exception_handler" => "\\Abc\\ErrorHandler\\ErrorHandler::exceptionHandler"
+];

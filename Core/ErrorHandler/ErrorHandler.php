@@ -3,7 +3,7 @@
  * This file is part of the Abc package.
  *
  * This source code is for educational purposes only. 
- * It is not recommended to use it in production as it is.
+ * It is not recommended using it in production as it is.
  */
 
 declare(strict_types = 1);
@@ -27,9 +27,9 @@ class ErrorHandler
 
     public function __construct()
     {
-        register_shutdown_function(function(){
+        register_shutdown_function( function () {
             $error = error_get_last();
-            if($error){
+            if ($error) {
                 $message = "Error [" . $error['type'] . "]: ";
                 $message .= "Message: " . $error['message'] . " - ";
                 $message .= "File: " . $error['file'] . " - ";
@@ -50,11 +50,6 @@ class ErrorHandler
         $data = 'An error was thrown: ' . $errfile . ' @ ' . $errline;
 
         Log::evo_log($data, 'error', $message);
-
-//        $request_number = Log::$request_number;
-
-//        require_once TEMPLATE_PATH . 'errors/500.php';
-//        exit;
     }
 
     public static function exceptionHandler($exception, $log_type = EXCEPTION_LOG, $code = null)
@@ -78,7 +73,6 @@ class ErrorHandler
         $content = self::errorContent($code, Log::$request_number);
 
         require_once TEMPLATE_PATH . 'error.php';
-//        exit;
     }
 
     private static function errorContent($code, $request_number): array
@@ -86,24 +80,24 @@ class ErrorHandler
         switch ($code) {
             case 404:
                 return [
-                    'title' => 'Page NOT Found',
-                    'header' => 'Are you lost?',
-                    'message' => 'PAGE NOT FOUND',
-                    'extra_info' => 'We can\'t seem to find the page you\'re looking for',
+                    'title' => TITLE_404,
+                    'header' => HEADER_404,
+                    'message' => MSG_404,
+                    'info' => INFO_404,
                 ];
             case 403:
                 return [
-                    'title' => 'Forbidden',
-                    'header' => 'Unauthorized Access',
+                    'title' => TITLE_403,
+                    'header' => HEADER_403,
                     'message' => MSG_403,
-                    'extra_info' => 'You are not allowed to access this content',
+                    'info' => INFO_403,
                 ];
             default:
                 return [
-                    'title' => 'Fatal Error',
-                    'header' => 'Something is not right...',
-                    'message' => 'INTERNAL SERVER ERROR',
-                    'extra_info' => 'Something went wrong. Contact your Administrator with the Request ID: ' . $request_number
+                    'title' => TITLE_500,
+                    'header' => HEADER_500,
+                    'message' => MSG_500,
+                    'info' => INFO_500 . $request_number
                 ];
         }
     }

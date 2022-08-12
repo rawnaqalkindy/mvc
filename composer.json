@@ -12,7 +12,8 @@
   "require": {
     "ext-json": "*",
     "ext-pdo": "*",
-    "symfony/dotenv": "^5.2"
+    "symfony/dotenv": "^5.2",
+    "ext-iconv": "*"
   },
   "autoload": {
     "psr-4": {

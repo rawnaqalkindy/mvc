@@ -2,16 +2,11 @@
 /*
  * This file is part of the Abc package.
  *
- * This source code is for educational purposes only.
- * It is not recommended to use it in production as it is.
+ * This source code is for educational purposes only. 
+ * It is not recommended using it in production as it is.
  */
 
-$vendorPath = '/Core/';
-
-/* Path the error handler resource files */
-$errorResource = 'ErrorHandler/Resources/';
-
-define("CORE_PATH", ROOT_PATH . $vendorPath);
+const CORE_PATH = ROOT_PATH . '/Core/';
 const SYSTEM_PATH = CORE_PATH . 'System/';
 
 const PUBLIC_PATH = ROOT_PATH . '/public';
@@ -26,17 +21,26 @@ if (!file_exists(ROOT_PATH . '/storage/logs')) {
 
 const STORAGE_PATH = ROOT_PATH . DS . 'storage';
 const LOG_PATH = STORAGE_PATH . DS . 'logs';
-const CACHE_PATH = STORAGE_PATH . DS;
-
-const APP_ROOT = ROOT_PATH;
-const ASSET_PATH = DS . PUBLIC_PATH . DS . 'assets';
-const CSS_PATH = PUBLIC_PATH . DS . 'css' . DS;
-const JS_PATH = PUBLIC_PATH . DS . 'js' . DS;
-const IMAGE_PATH = PUBLIC_PATH . DS . 'images' . DS;
-
 
 // messages
-const MSG_403 = "You are not authorized to access this page.";
+const MSG_403 = "You are not authorized to access this page";
+const MSG_404 = "PAGE NOT FOUND";
+const MSG_500 = "INTERNAL SERVER ERROR";
+
+// titles
+const TITLE_403 = "Forbidden";
+const TITLE_404 = "Page NOT Found";
+const TITLE_500 = "Fatal Error";
+
+// headers
+const HEADER_403 = "Unauthorized Access";
+const HEADER_404 = "Are you lost?";
+const HEADER_500 = "Something is not right...";
+
+// info
+const INFO_403 = "You are not allowed to access this content";
+const INFO_404 = "We can't seem to find the page you're looking for";
+const INFO_500 = "Something went wrong. Contact your Administrator with the Request ID: ";
 
 // log types
 const CRITICAL_LOG = 'critical';

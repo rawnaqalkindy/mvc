@@ -1,55 +1,16 @@
 <?php
+/*
+ * This file is part of the Abc package.
+ *
+ * This source code is for educational purposes only.
+ * It is not recommended using it in production as it is.
+ */
 
 namespace Abc\Utility;
 
 class Log
 {
     public static $request_number;
-
-    function __construct()
-    {
-
-    }
-
-    static function emailErr($msg)
-    {
-        date_default_timezone_set('Africa/Dar_es_Salaam');
-        $file = STORAGE_PATH . '/logs/email_error.txt';
-        return self::saveLog($file, $msg);
-    }
-
-    private static function saveLog($file, $msg) {
-        date_default_timezone_set('Africa/Dar_es_Salaam');
-
-        if (!file_exists(LOG_PATH . '/request_trails/')) {
-            mkdir(LOG_PATH . '/request_trails/', 0777, true);
-        }
-
-        $log = '[' . date('Y-m-d H:i:s') . '] | ' . self::$request_number . ' | ' . $msg . "\n";
-        $syslog_file = STORAGE_PATH . '/logs/request_trails/' . date('Y-m-d') . '_log.txt';
-        if ($file == 'default') {
-            file_put_contents($syslog_file, $log, FILE_APPEND | LOCK_EX);
-            return 1;
-        }
-        file_put_contents($file, $log, FILE_APPEND | LOCK_EX);
-        file_put_contents($syslog_file, $log, FILE_APPEND | LOCK_EX);
-
-        return 1;
-    }
-
-    public static function savePlainLog($msg) {
-        date_default_timezone_set('Africa/Dar_es_Salaam');
-        $log =  $msg . "\n";
-        $syslog_file = STORAGE_PATH . '/logs/' . date('Y-m-d') . '_log.txt';
-        file_put_contents($syslog_file, $log, FILE_APPEND | LOCK_EX);
-
-        return 1;
-    }
-
-    static function sysLog($msg): int
-    {
-        return self::saveLog('default', $msg);
-    }
 
     static function evo_log($data, $log_type = NOTICE_LOG, $extra_info = null) {
         $log_type_uc = strtoupper($log_type);

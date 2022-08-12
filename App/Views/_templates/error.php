@@ -42,20 +42,13 @@
                     </div>
                 </div>
 
-                <div class="w-full text-center text-gray-500 my-2"><?php echo $content['extra_info'] ?></div>
+                <div class="w-full text-center text-gray-500 my-2"><?php echo $content['info'] ?></div>
 
                 <a href='/home/index' class='flex flex-col flex-grow items-center justify-center rounded mt-3 px-8 mx-auto text-gray-600 h-full'>
                     Go Back
                 </a>
             </div>
         </main>
-
-        <div class='bg-transparent'>
-            <!--            --><?php
-            //            if ($_SESSION)
-            //            require_once  VIEWS_PATH . 'includes/footer.html' ?>
-        </div>
-
     </div>
 </div>
 

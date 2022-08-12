@@ -1,16 +1,10 @@
 <?php
 /*
- * This file is part of the evo package.
+ * This file is part of the Abc package.
  *
- * (c) John Andrew <simplygenius78@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * This source code is for educational purposes only. 
+ * It is not recommended using it in production as it is.
  */
-
-
-/** Path the vendor src directory */
-
 
 const DS = '/';
 
@@ -27,8 +21,4 @@ if (is_file($autoload)) {
 }
 
 require_once CONFIG_PATH . 'AppConfig.php';
-
 require_once CONFIG_PATH . 'SysConstants.php';
-
-require_once CONFIG_PATH . 'SysCoreConfig.php';
-require_once CONFIG_PATH . 'SysConfig.php';

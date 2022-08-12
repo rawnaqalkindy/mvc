@@ -1,11 +1,9 @@
 <?php
 /*
- * This file is part of the evo package.
+ * This file is part of the Abc package.
  *
- * (c) John Andrew <simplygenius78@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * This source code is for educational purposes only. 
+ * It is not recommended using it in production as it is.
  */
 
 declare(strict_types = 1);
@@ -21,10 +19,12 @@ use Abc\Utility\Log;
 require_once 'include.php';
 //print_r(phpversion());
 //exit;
+//echo APP['error_handler'] . '<br>';
+//echo APP['exception_handler'] . '<br>';
 
 error_reporting(E_ALL);
-set_error_handler(APP['error_handler']['error']);
-set_exception_handler(APP['error_handler']['exception']);
+set_error_handler(APP['error_handler']);
+set_exception_handler(APP['exception_handler']);
 
 session_start();
 
@@ -32,20 +32,20 @@ function getRequestData(): array
 {
     $data = [];
     $files = [];
+
     if ($_FILES) {
         $files = $_FILES;
         $data = $_POST;
     } else {
         $data = file_get_contents('php://input');
     }
+
     return [
         'data' => $data, 'files' => $files
     ];
 }
 
 Log::$request_number = hrtime(true);
-
-Log::sysLog('Request initiated.');
 
 Log::evo_log("*********************************************************************************************************************************\n\n", 'plain');
 Log::evo_log('REQUEST-STARTED');
@@ -54,7 +54,6 @@ $url = $_SERVER['QUERY_STRING'] ?? $_SERVER['REQUEST_URI'];
 if (strpos($url, '.ico') || strpos($url, '.png') || strpos($url, '.jpg')) {
     Log::evo_log('Invalid URL: ' . $url);
     Log::evo_log('REQUEST-TERMINATED');
-    Log::sysLog('Request terminated.' . "\n");
     exit;
 }
 
@@ -69,5 +68,3 @@ try {
 }
 
 Log::evo_log('REQUEST-ENDED');
-
-Log::sysLog('Request completed lifecycle.' . "\n");
