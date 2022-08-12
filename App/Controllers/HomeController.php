@@ -8,7 +8,6 @@ class HomeController extends BaseController
 {
     public function index()
     {
-//        echo __METHOD__;
         $this->view('home/index');
     }
 }
