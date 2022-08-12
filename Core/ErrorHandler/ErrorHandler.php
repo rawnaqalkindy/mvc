@@ -73,6 +73,7 @@ class ErrorHandler
         $content = self::errorContent($code, Log::$request_number);
 
         require_once TEMPLATE_PATH . 'error.php';
+//        require_once TEMPLATE_PATH . 'error_bootstrap.php';
     }
 
     private static function errorContent($code, $request_number): array
