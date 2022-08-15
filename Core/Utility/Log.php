@@ -12,7 +12,7 @@ class Log
 {
     public static $request_number;
 
-    static function evo_log($data, $log_type = NOTICE_LOG, $extra_info = null) {
+    static function write($data, $log_type = NOTICE_LOG, $extra_info = null) {
         $log_type_uc = strtoupper($log_type);
         $system_audits_directory = 'system';
 

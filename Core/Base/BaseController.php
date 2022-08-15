@@ -25,18 +25,18 @@ class BaseController
 
     public function view(string $template, array $context = [])
     {
-        Log::evo_log('Is the templating engine available?');
+        Log::write('Is the templating engine available?');
         $this->throwExceptionIfViewNull();
-        Log::evo_log('Yes it is. Adding template extension.');
+        Log::write('Yes it is. Adding template extension.');
         $template = $template . TEMPLATE_EXTENSION;
 
-        Log::evo_log('Rendering the template response');
+        Log::write('Rendering the template response');
         $this->templateEngine::render($template, $context);
     }
 
     public function template(string $template, array $context = [])
     {
-        Log::evo_log('Rendering a built-in template response');
+        Log::write('Rendering a built-in template response');
         $this->templateEngine::template($template, $context);
     }
 

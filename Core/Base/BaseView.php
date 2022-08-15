@@ -26,7 +26,7 @@ class BaseView
         }
     }
 
-    public static function template(string $template, array $optional_view_data = [])
+    public static function template(string $template, array $optional_view_data = []): string
     {
         $file = ROOT_PATH . '/App/Views/_templates/' . $template;
 //        echo $file;

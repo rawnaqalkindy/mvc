@@ -2,17 +2,15 @@
 /*
  * This file is part of the Abc package.
  *
- * (c) John M. Andrew <simplygenius78@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * This source code is for educational purposes only. 
+ * It is not recommended using it in production as it is.
  */
 
 declare(strict_types = 1);
 
 use Abc\Utility\Log;
 
-Log::evo_log('Wrong directory: ' . realpath(dirname(__FILE__, 1)) . '. Navigate to /public', 'emergency');
+Log::write('Wrong directory: ' . realpath(dirname(__FILE__, 1)) . '. Navigate to /public', 'emergency');
 
 echo '<pre>';
 echo '<br />';print_r($_SERVER);

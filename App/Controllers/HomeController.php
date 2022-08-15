@@ -1,4 +1,10 @@
 <?php
+/*
+ * This file is part of the Abc package.
+ *
+ * This source code is for educational purposes only.
+ * It is not recommended using it in production as it is.
+ */
 
 namespace App\Controllers;
 
@@ -8,6 +14,8 @@ class HomeController extends BaseController
 {
     public function index()
     {
-        $this->view('home/index');
+        // echo 'Yeeeey!';
+        echo __METHOD__;
+        // $this->view('home/index');
     }
 }

@@ -43,7 +43,7 @@
 
     ## Begin - Security
     # Block all direct access for these folders
-    RewriteRule ^(\.git|bin|tmp|Storage|webserver-configs|tests)/(.*) error [F]
+    RewriteRule ^(\.git|bin|tmp|storage|webserver-configs|tests)/(.*) error [F]
     # Block access to specific file types for these system folders
     RewriteRule ^(core|vendor)/(.*)\.(txt|xml|md|html|yaml|yml|php|pl|py|cgi|twig|sh|bat)$ error [F]
     # Block access to specific file types for these user folders

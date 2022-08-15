@@ -16,21 +16,21 @@ abstract class AbstractBaseModel extends BaseModel
 {
     public function create()
     {
-        Log::evo_log('Saving a new object');
+        Log::write('Saving a new object');
     }
 
     public function read()
     {
-        Log::evo_log('Retrieving object(s) from the database');
+        Log::write('Retrieving object(s) from the database');
     }
 
     public function update($id)
     {
-        Log::evo_log('Updating the object using its ID');
+        Log::write('Updating the object using its ID');
     }
 
     public function delete($id)
     {
-        Log::evo_log('Deleting the object using its ID');
+        Log::write('Deleting the object using its ID');
     }
 }

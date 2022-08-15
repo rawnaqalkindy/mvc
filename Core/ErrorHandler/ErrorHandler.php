@@ -15,7 +15,6 @@ use Abc\Utility\Log;
 
 class ErrorHandler
 {
-
     /**
      * Number of lines to be returned
      */
@@ -35,7 +34,7 @@ class ErrorHandler
                 $message .= "File: " . $error['file'] . " - ";
                 $message .= "Line: " . $error['line'];
 
-                Log::evo_log($message, ERROR_LOG, new ErrorException($error['message'], -1, $error['type'], $error['file'], $error['line']));
+                Log::write($message, ERROR_LOG, new ErrorException($error['message'], -1, $error['type'], $error['file'], $error['line']));
             }
         });
     }
@@ -49,7 +48,7 @@ class ErrorHandler
 
         $data = 'An error was thrown: ' . $errfile . ' @ ' . $errline;
 
-        Log::evo_log($data, 'error', $message);
+        Log::write($data, 'error', $message);
     }
 
     public static function exceptionHandler($exception, $log_type = EXCEPTION_LOG, $code = null)
@@ -68,7 +67,7 @@ class ErrorHandler
         $message .= "\nFile: " . $exception->getFile();
         $message .= "\nLine: " . $exception->getLine();
 
-        Log::evo_log('An exception was thrown: ' . $exception->getFile() . ' @ ' . $exception->getLine(), $log_type, $message);
+        Log::write('An exception was thrown: ' . $exception->getFile() . ' @ ' . $exception->getLine(), $log_type, $message);
 
         $content = self::errorContent($code, Log::$request_number);
 

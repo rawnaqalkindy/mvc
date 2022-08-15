@@ -15,6 +15,7 @@ declare(strict_types = 1);
 
 use Abc\Base\BaseApplication;
 use Abc\Utility\Log;
+use Abc\ErrorHandler\ErrorHandler;
 
 require_once 'include.php';
 //print_r(phpversion());
@@ -47,24 +48,26 @@ function getRequestData(): array
 
 Log::$request_number = hrtime(true);
 
-Log::evo_log("*********************************************************************************************************************************\n\n", 'plain');
-Log::evo_log('REQUEST-STARTED');
+Log::write("*********************************************************************************************************************************\n\n", 'plain');
+Log::write('REQUEST-LIFECYCLE-STARTED');
+
 $url = $_SERVER['QUERY_STRING'] ?? $_SERVER['REQUEST_URI'];
 
 if (strpos($url, '.ico') || strpos($url, '.png') || strpos($url, '.jpg')) {
-    Log::evo_log('Invalid URL: ' . $url);
-    Log::evo_log('REQUEST-TERMINATED');
+    Log::write('Invalid URL: ' . $url);
+    Log::write('REQUEST-LIFECYCLE-TERMINATED');
     exit;
 }
 
-Log::evo_log('REQUEST-URL: ' . $url);
-Log::evo_log('REQUEST-CONTENT-TYPE: ' . (array_key_exists('CONTENT_TYPE', $_SERVER) ? $_SERVER['CONTENT_TYPE'] : null));
-Log::evo_log('REQUEST-DATA: ' . json_encode(getRequestData()));
+Log::write('REQUEST-URL: ' . $url);
+Log::write('REQUEST-CONTENT-TYPE: ' . (array_key_exists('CONTENT_TYPE', $_SERVER) ? $_SERVER['CONTENT_TYPE'] : null));
+Log::write('REQUEST-DATA: ' . json_encode(getRequestData()));
 
 try {
     new BaseApplication();
 } catch (Exception $e) {
-    echo $e->getMessage();
+    // echo $e->getMessage();
+    ErrorHandler::exceptionHandler(new Exception('Failes o instantiate the application'), CRITICAL_LOG);
 }
 
-Log::evo_log('REQUEST-ENDED');
+Log::write('REQUEST-LIFECYCLE-ENDED');
