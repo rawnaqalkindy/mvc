@@ -11,6 +11,7 @@ declare (strict_types = 1);
 namespace Abc\Base;
 
 use Abc\Utility\Log;
+use PDO;
 
 abstract class AbstractBaseModel extends BaseModel
 {
@@ -19,14 +20,16 @@ abstract class AbstractBaseModel extends BaseModel
         Log::write('Saving a new object');
     }
 
-    public function read()
+    public function read(bool $count = false)
     {
-        Log::write('Retrieving object(s) from the database');
+        Log::write('Retrieving object(s) from the table');
         $sql = "SELECT * FROM " . $this->tableSchema;
 
-        $result = $this->db->query($sql);
-        print_r($result);
-        exit;
+        $statement = $this->getDBConnection()->query($sql);
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        // print_r($results);
+
+        return $results;
     }
 
     public function update($id)
@@ -37,5 +40,16 @@ abstract class AbstractBaseModel extends BaseModel
     public function delete($id)
     {
         Log::write('Deleting the object using its ID');
+    }
+
+    public function count()
+    {
+        Log::write('Counting object(s) in the table');
+        $sql = "SELECT * FROM " . $this->tableSchema;
+
+        $statement = $this->getDBConnection()->query($sql);
+        // print_r($statement->rowCount());
+
+        return $statement->rowCount();
     }
 }

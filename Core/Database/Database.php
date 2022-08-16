@@ -59,7 +59,7 @@ class Database
         } catch (PDOException $e) {
             $this->conn = null;
             $this->connection_status = 'Failed';
-            ErrorHandler::exceptionHandler($e, CRITICAL_LOG);
+            ErrorHandler::exceptionHandler($e, DB_LOG);
             // return null;
         }
         return $this;

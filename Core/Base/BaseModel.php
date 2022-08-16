@@ -40,4 +40,9 @@ class BaseModel
         return $this->tableSchema;
     }
 
+    public function getDBConnection(): ?PDO
+    {
+        return $this->db;
+    }
+
 }

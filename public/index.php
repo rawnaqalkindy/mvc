@@ -13,7 +13,7 @@ declare(strict_types = 1);
  * and initialize the necessary components.
  */
 
-use Abc\Base\BaseApplication;
+use Abc\Base\App;
 use Abc\Utility\Log;
 use Abc\ErrorHandler\ErrorHandler;
 
@@ -49,13 +49,13 @@ function getRequestData(): array
 Log::$request_number = hrtime(true);
 
 Log::write("*********************************************************************************************************************************\n\n", 'plain');
-Log::write('REQUEST-LIFECYCLE-STARTED');
+Log::write('REQUEST-STARTED');
 
 $url = $_SERVER['QUERY_STRING'] ?? $_SERVER['REQUEST_URI'];
 
 if (strpos($url, '.ico') || strpos($url, '.png') || strpos($url, '.jpg') || strpos($url, '.css') || strpos($url, '.js')) {
-    Log::write('Invalid URL: ' . $url);
-    Log::write('REQUEST-LIFECYCLE-TERMINATED');
+    Log::write('Invalid URL: ' . $url, WARNING_LOG);
+    Log::write('REQUEST-TERMINATED');
     exit;
 }
 
@@ -64,10 +64,10 @@ Log::write('REQUEST-CONTENT-TYPE: ' . (array_key_exists('CONTENT_TYPE', $_SERVER
 Log::write('REQUEST-DATA: ' . json_encode(getRequestData()));
 
 try {
-    new BaseApplication();
+    new App();
 } catch (Exception $e) {
     // echo $e->getMessage();
     ErrorHandler::exceptionHandler(new Exception('Failes o instantiate the application'), CRITICAL_LOG);
 }
 
-Log::write('REQUEST-LIFECYCLE-ENDED');
+Log::write('REQUEST-ENDED');

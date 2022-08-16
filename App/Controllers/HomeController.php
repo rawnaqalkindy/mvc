@@ -20,13 +20,15 @@ class HomeController extends BaseController
     public function index()
     {
         echo '<pre>';
-        // $users = $this->model->db->read();
-        print_r($this->model->db);
-        // print_r($users);
-        // print_r($users);
-        // print_r($users);
-        // print_r($users);
-        // echo __METHOD__;
-        // $this->view('home/index');
+        $users = $this->model->read();
+        $number_of_users = $this->model->count();
+
+        echo 'Number of Users: ' . $number_of_users . '<br>';
+        print_r($users);
+        echo '</pre>';
+
+        // $this->view('home/index', [
+        //     'users' => $users
+        // ]);
     }
 }

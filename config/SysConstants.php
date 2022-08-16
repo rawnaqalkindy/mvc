@@ -50,3 +50,4 @@ const ERROR_LOG = 'error';
 const NOTICE_LOG = 'notice';
 const INFO_LOG = 'info';
 const DEBUG_LOG = 'debug';
+const DB_LOG = 'database';

@@ -18,6 +18,7 @@ const MY_THEME = TAILWIND_THEME;
 const TEMPLATE_PATH = ROOT_PATH . '/App/Views/_templates/';
 
 const TEMPLATE_EXTENSION = '.php';
+const LOG_EXTENSION = '.log';
 const MODULE_NAMESPACE = '_Modules\\';
 const MODEL_NAMESPACE = 'App\Models\\';
 const CONTROLLER_NAMESPACE = 'App\Controllers\\';

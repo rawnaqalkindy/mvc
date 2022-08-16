@@ -14,7 +14,7 @@ use Abc\ErrorHandler\ErrorHandler;
 use Abc\Utility\Log;
 use Exception;
 
-class BaseApplication
+class App
 {
     protected string $controller = 'home';
     protected string $controller_suffix = 'controller';
