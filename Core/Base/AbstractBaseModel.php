@@ -20,7 +20,7 @@ abstract class AbstractBaseModel extends BaseModel
         Log::write('Saving a new object');
     }
 
-    public function read(bool $count = false)
+    public function read()
     {
         Log::write('Retrieving object(s) from the table');
         $sql = "SELECT * FROM " . $this->tableSchema;
@@ -44,11 +44,12 @@ abstract class AbstractBaseModel extends BaseModel
 
     public function count()
     {
-        Log::write('Counting object(s) in the table');
+        Log::write('Counting records in the table');
         $sql = "SELECT * FROM " . $this->tableSchema;
 
         $statement = $this->getDBConnection()->query($sql);
         // print_r($statement->rowCount());
+        Log::write('Found ' . $statement->rowCount() . ' record(s)');
 
         return $statement->rowCount();
     }
