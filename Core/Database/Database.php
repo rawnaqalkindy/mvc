@@ -21,6 +21,7 @@ class Database
     private string $dbPass = '';
     private string $dbName = 'sample_db';
     private ?PDO $conn;
+    
     public string $connection_status;
 
     protected array $params = [
@@ -29,6 +30,10 @@ class Database
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ];
+
+    public function __construct() {
+        $this->open();
+    }
 
     public function getDbCredentials(): array
     {
@@ -40,17 +45,24 @@ class Database
         ];
     }
 
-    public function open(): ?PDO
+    public function getConnection()
+    {
+        return $this->conn;
+    }
+
+    private function open(): self
     {
         try {
             $this->conn = new PDO("mysql:host=$this->dbHost;dbname=$this->dbName", $this->dbUname, $this->dbPass, $this->params);
             $this->connection_status = 'Connected';
-            return $this->conn;
+            // return $this->conn;
         } catch (PDOException $e) {
+            $this->conn = null;
             $this->connection_status = 'Failed';
             ErrorHandler::exceptionHandler($e, CRITICAL_LOG);
-            return null;
+            // return null;
         }
+        return $this;
     }
 
     private function close()

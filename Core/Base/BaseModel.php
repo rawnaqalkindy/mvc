@@ -27,7 +27,7 @@ class BaseModel
         $this->tableSchema = $tableSchema;
         $this->tableSchemaID = $tableSchemaID;
 
-        $this->db = new DB;
+        $this->db = (new DB)->getConnection();
     }
 
     public function getSchemaID(): string

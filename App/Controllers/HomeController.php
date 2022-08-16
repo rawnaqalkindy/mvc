@@ -19,8 +19,14 @@ class HomeController extends BaseController
 
     public function index()
     {
-        // echo 'Yeeeey!';
-        echo __METHOD__;
+        echo '<pre>';
+        // $users = $this->model->db->read();
+        print_r($this->model->db);
+        // print_r($users);
+        // print_r($users);
+        // print_r($users);
+        // print_r($users);
+        // echo __METHOD__;
         // $this->view('home/index');
     }
 }

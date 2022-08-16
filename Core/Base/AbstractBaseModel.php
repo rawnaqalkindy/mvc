@@ -22,6 +22,11 @@ abstract class AbstractBaseModel extends BaseModel
     public function read()
     {
         Log::write('Retrieving object(s) from the database');
+        $sql = "SELECT * FROM " . $this->tableSchema;
+
+        $result = $this->db->query($sql);
+        print_r($result);
+        exit;
     }
 
     public function update($id)
