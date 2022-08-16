@@ -9,9 +9,14 @@
 namespace App\Controllers;
 
 use Abc\Base\BaseController;
+use App\Models\HomeModel;
 
 class HomeController extends BaseController
 {
+    public function __construct() {
+        parent::__construct('Home');
+    }
+
     public function index()
     {
         // echo 'Yeeeey!';

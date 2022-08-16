@@ -17,9 +17,15 @@ use Exception;
 class BaseController
 {
     protected Object $templateEngine;
+    protected ?object $model;
 
-    public function __construct()
+    public function __construct($model = null)
     {
+        if ($model != null && $model != '') {
+            $model_with_namespace = 'App\\Models\\' . ucfirst(strtolower($model)) . 'Model';
+            $this->model = new $model_with_namespace;
+        }
+        
         $this->templateEngine = new BaseView();
     }
 
@@ -43,7 +49,7 @@ class BaseController
     private function throwExceptionIfViewNull(): void
     {
         if (null === $this->templateEngine) {
-            ErrorHandler::exceptionHandler(new Exception('Nope. You can not use the render method if the build in template engine is not available'), CRITICAL_LOG);
+            ErrorHandler::exceptionHandler(new Exception('Nope. You can not use the render method if the built in template engine is not available'), CRITICAL_LOG);
             exit;
         }
     }

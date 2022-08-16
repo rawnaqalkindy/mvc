@@ -10,29 +10,24 @@ declare (strict_types = 1);
 
 namespace Abc\Base;
 
+use Abc\Database\Database as DB;
 use Abc\ErrorHandler\ErrorHandler;
 use Abc\Utility\Log;
 use Exception;
+use PDO;
 
 class BaseModel
 {
-    protected string $tableSchema;
-    protected string $tableSchemaID;
+    protected ?string $tableSchema;
+    protected ?string $tableSchemaID;
+    protected ?PDO $db;
 
     public function __construct(string $tableSchema = null, string $tableSchemaID = null)
     {
-        $this->throwExceptionIfEmpty($tableSchema, $tableSchemaID);
-
         $this->tableSchema = $tableSchema;
         $this->tableSchemaID = $tableSchemaID;
-    }
 
-    private function throwExceptionIfEmpty(string $tableSchema, string $tableSchemaID): void
-    {
-        if (empty($tableSchema) || empty($tableSchemaID)) {
-            ErrorHandler::exceptionHandler(new Exception('Your model is missing the required constants. Please pass the TABLESCHEMA and TABLESCHEMAID constants.'));
-            exit;
-        }
+        $this->db = new DB;
     }
 
     public function getSchemaID(): string

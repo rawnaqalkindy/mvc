@@ -15,12 +15,6 @@ use Abc\Utility\Log;
 
 class ErrorHandler
 {
-    /**
-     * Number of lines to be returned
-     */
-    private const NUM_LINES = 10;
-    private static array $trace = [];
-
     private const ERROR_CODES = [404, 403];
     private const DEFAULT_ERROR_CODE = 500;
 

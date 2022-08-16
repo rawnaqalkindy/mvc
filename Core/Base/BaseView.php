@@ -16,7 +16,8 @@ class BaseView
     public static function render(string $template, array $optional_view_data = [])
     {
         $file = ROOT_PATH . '/App/Views/' . $template;
-//        echo $file;
+        // echo $file;
+        // exit;
 
         if (is_readable($file)) {
             require_once $file;
@@ -32,7 +33,7 @@ class BaseView
 //        echo $file;
 
         if (is_readable($file)) {
-            require $file;
+            require_once $file;
         } else {
             ErrorHandler::exceptionHandler(new Exception("$file not found"));
             exit;

@@ -11,5 +11,10 @@ use Abc\Base\AbstractBaseModel;
 
 class HomeModel extends AbstractBaseModel
 {
+    protected const TABLESCHEMA = 'users';
+	protected const TABLESCHEMAID = 'id';
 
+    public function __construct() {
+        parent::__construct(self::TABLESCHEMA, self::TABLESCHEMAID);
+    }
 }

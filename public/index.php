@@ -53,7 +53,7 @@ Log::write('REQUEST-LIFECYCLE-STARTED');
 
 $url = $_SERVER['QUERY_STRING'] ?? $_SERVER['REQUEST_URI'];
 
-if (strpos($url, '.ico') || strpos($url, '.png') || strpos($url, '.jpg')) {
+if (strpos($url, '.ico') || strpos($url, '.png') || strpos($url, '.jpg') || strpos($url, '.css') || strpos($url, '.js')) {
     Log::write('Invalid URL: ' . $url);
     Log::write('REQUEST-LIFECYCLE-TERMINATED');
     exit;
