@@ -17,7 +17,6 @@ class BaseView
     {
         $file = ROOT_PATH . '/App/Views/' . $template;
         // echo $file;
-        // exit;
 
         if (is_readable($file)) {
             require_once $file;
