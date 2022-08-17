@@ -66,8 +66,7 @@ Log::write('REQUEST-DATA: ' . json_encode(getRequestData()));
 try {
     new App();
 } catch (Exception $e) {
-    // echo $e->getMessage();
-    ErrorHandler::exceptionHandler(new Exception('Failes o instantiate the application'), CRITICAL_LOG);
+    ErrorHandler::exceptionHandler($e, CRITICAL_LOG);
 }
 
 Log::write('REQUEST-ENDED');
