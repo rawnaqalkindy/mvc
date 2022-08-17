@@ -26,13 +26,14 @@ abstract class AbstractBaseModel extends BaseModel
         // exit;
 
         Log::write('Saving a new object');
+        $keys = implode(",", array_keys($data));
+        $values = '\'' . implode("', '", array_values($data)) . '\'';
 
-        $sql = 'INSERT INTO ' . $this->tableSchema . ' (' . $key . ') VALUES (' . $value . ')';
-        // echo $sql . '<br>';
+        $sql = 'INSERT INTO ' . $this->tableSchema . '(' . $keys . ') VALUES (' . $values . ')';
+        // echo $sql;
         // exit;
-        $statement = $this->getDBConnection()->query($sql);
-    // $results = $statement->fetchAll(PDO::FETCH_ASSOC); 
-    // return $results;
+
+        return $this->getDBConnection()->query($sql);
     }
 
     public function read()

@@ -60,7 +60,6 @@ class Database
             $this->conn = null;
             $this->connection_status = 'Failed';
             ErrorHandler::exceptionHandler($e, DB_LOG);
-            // return null;
         }
         return $this;
     }

@@ -19,16 +19,31 @@ class HomeController extends BaseController
 
     public function index()
     {
-        echo '<pre>';
+        // echo '<pre>';
         $users = $this->model->read();
         $number_of_users = $this->model->count();
 
-        echo 'Number of Users: ' . $number_of_users . '<br>';
-        print_r($users);
-        echo '</pre>';
+        // echo 'Number of Users: ' . $number_of_users . '<br>';
+        // print_r($users);
+        // echo '</pre>';
 
-        // $this->view('home/index', [
-        //     'users' => $users
-        // ]);
+        $this->view('home/index', [
+            'users' => $users
+        ]);
+    }
+
+    public function add()
+    {
+        $data = [
+            'name' => 'Michael Peter',
+            'address' => 'Msikitini',
+            'location' => 'Kilimani',
+        ];
+
+        if($this->model->create($data)) {
+            echo 'User added successfully';
+        } else {
+            echo 'Operation failed!';
+        }
     }
 }

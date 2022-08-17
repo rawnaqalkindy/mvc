@@ -15,6 +15,6 @@ class HomeModel extends AbstractBaseModel
 	protected const TABLESCHEMAID = 'id';
 
     public function __construct() {
-        parent::__construct(self::TABLESCHEMA, self::TABLESCHEMAID);
+        parent::__construct(self::TABLESCHEMA, self::TABLESCHEMAID);    
     }
 }
