@@ -42,7 +42,6 @@ class App
 
         if (!class_exists($controller_with_namespace)) {
             ErrorHandler::exceptionHandler(new Exception('Class ' . $controller . ' does not exist'), CRITICAL_LOG, 404);
-            exit;
         }
         
         Log::write('Controller exists');
@@ -62,7 +61,6 @@ class App
             $controller_object->$method();
         } else {
             ErrorHandler::exceptionHandler(new Exception('Method ' . $method . ' NOT FOUND in ' . $controller . ucfirst(strtolower($this->controller_suffix))), CRITICAL_LOG, 404);
-            exit;
         }
     }
 

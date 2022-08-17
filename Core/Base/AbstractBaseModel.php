@@ -15,9 +15,17 @@ use PDO;
 
 abstract class AbstractBaseModel extends BaseModel
 {
-    public function create()
+    public function create($data)
     {
         Log::write('Saving a new object');
+        $keys = implode(",", array_keys($data));
+        $values = '\'' . implode("', '", array_values($data)) . '\'';
+
+        $sql = 'INSERT INTO ' . $this->tableSchema . '(' . $keys . ') VALUES (' . $values . ')';
+        // echo $sql;
+        // exit;
+
+        return $this->getDBConnection()->query($sql);
     }
 
     public function read()

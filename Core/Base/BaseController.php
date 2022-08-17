@@ -50,14 +50,12 @@ class BaseController
     {
         if (null === $this->templateEngine) {
             ErrorHandler::exceptionHandler(new Exception('Nope. You can not use the render method if the built in template engine is not available'), CRITICAL_LOG);
-            exit;
         }
     }
 
     public function _permissionDenied($unauthorized_task = null) {
         if ($unauthorized_task != null && $unauthorized_task != '') {
             ErrorHandler::exceptionHandler(new Exception('No permission to access: ' . $unauthorized_task), EXCEPTION_LOG, 403);
-            exit;
         }
     }
 

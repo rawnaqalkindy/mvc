@@ -67,6 +67,7 @@ class ErrorHandler
 
         require_once TEMPLATE_PATH . 'error.php';
 //        require_once TEMPLATE_PATH . 'error_bootstrap.php';
+        exit;
     }
 
     private static function errorContent($code, $request_number): array

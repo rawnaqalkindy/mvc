@@ -22,7 +22,6 @@ class BaseView
             require_once $file;
         } else {
             ErrorHandler::exceptionHandler(new Exception("$file not found"));
-            exit;
         }
     }
 
@@ -35,7 +34,6 @@ class BaseView
             require_once $file;
         } else {
             ErrorHandler::exceptionHandler(new Exception("$file not found"));
-            exit;
         }
     }
 }
