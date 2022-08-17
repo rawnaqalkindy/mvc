@@ -6,7 +6,8 @@
  * It is not recommended using it in production as it is.
  */
 
-declare (strict_types = 1);
+declare(strict_types = 1)
+;
 
 namespace Abc\Base;
 
@@ -15,9 +16,23 @@ use PDO;
 
 abstract class AbstractBaseModel extends BaseModel
 {
-    public function create()
+    public function create($data)
     {
+        $key = implode(",", array_keys($data));
+        $value = '\'' . implode("','", array_values($data)) . '\'';
+
+        // print_r($key);echo '<br>';
+        // print_r($value);echo '<br>';
+        // exit;
+
         Log::write('Saving a new object');
+
+        $sql = 'INSERT INTO ' . $this->tableSchema . ' (' . $key . ') VALUES (' . $value . ')';
+        // echo $sql . '<br>';
+        // exit;
+        $statement = $this->getDBConnection()->query($sql);
+    // $results = $statement->fetchAll(PDO::FETCH_ASSOC); 
+    // return $results;
     }
 
     public function read()

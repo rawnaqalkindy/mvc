@@ -16,7 +16,7 @@ use Exception;
 
 class App
 {
-    protected string $controller = 'home';
+    protected string $controller = 'employee';
     protected string $controller_suffix = 'controller';
     protected string $method = 'index';
 
